@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  universitiesApi: 'http://universities.hipolabs.com'
+
 };
