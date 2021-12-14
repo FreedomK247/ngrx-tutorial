@@ -21,6 +21,7 @@
     "@ngrx/data": "^12.1.0",
     "@ngrx/effects": "^12.1.0",
     "@ngrx/entity": "^12.1.0",
+    "@ngrx/schematics": "^12.1.0",
     "@ngrx/store": "^12.1.0",
     "@ngrx/store-devtools": "^12.1.0",
     "rxjs": "~6.6.0",

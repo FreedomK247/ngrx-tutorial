@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { UniversityModel } from 'src/app/_models';
 
 import { environment } from 'src/environments/environment';
@@ -16,7 +16,7 @@ export class UniversityService {
 
   constructor(private http: HttpClient) {}
 
-  getUniversities() {
+  getUniversities(): Observable<UniversityModel[]> {
     var param = 'South+Africa';
     return this.http.get<UniversityModel[]>(`${Api}/search?country=${param}`);
   }
