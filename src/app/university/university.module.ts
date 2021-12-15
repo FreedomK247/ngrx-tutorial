@@ -1,17 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UniversityRoutingModule } from './university-routing.module';
-import { UniversityComponent } from './university.component';
+import {
+  UniversityRoutingModule,
+  declarations,
+} from './university-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
+import { UniversityService } from '../_services';
+import { universityeducer, UniversityEffects } from './store';
 
 @NgModule({
-  declarations: [
-    UniversityComponent
-  ],
+  declarations: [...declarations],
   imports: [
     CommonModule,
-    UniversityRoutingModule
-  ]
+    UniversityRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature('universities', universityeducer),
+    EffectsModule.forFeature([UniversityEffects]),
+  ],
+  providers: [UniversityService],
 })
-export class UniversityModule { }
+export class UniversityModule {}
