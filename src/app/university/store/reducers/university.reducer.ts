@@ -11,7 +11,9 @@ export interface UniversityState extends EntityState<UniversityModel> {
 }
 
 export const adapter: EntityAdapter<UniversityModel> =
-  createEntityAdapter<UniversityModel>();
+  createEntityAdapter<UniversityModel>({
+    selectId:(university: UniversityModel)=> university.name
+  });
 
 export const initialState = adapter.getInitialState({
   universitiesLoaded: false,

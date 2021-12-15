@@ -10,7 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { UniversityService } from '../_services';
-import { universityeducer, UniversityEffects } from './store';
+import { universityeducer, UniversityEffects, UniversityResolver } from './store';
 
 @NgModule({
   declarations: [...declarations],
@@ -22,6 +22,6 @@ import { universityeducer, UniversityEffects } from './store';
     StoreModule.forFeature('universities', universityeducer),
     EffectsModule.forFeature([UniversityEffects]),
   ],
-  providers: [UniversityService],
+  providers: [UniversityResolver, UniversityService],
 })
 export class UniversityModule {}
