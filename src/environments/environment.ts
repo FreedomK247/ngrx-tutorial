@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  universitiesApi: 'http://universities.hipolabs.com'
+  universitiesApi: 'http://universities.hipolabs.com',
+  cerberusDashboardApi: 'https://localhost:5001'
 };
 
 /*
