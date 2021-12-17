@@ -1,46 +1,56 @@
 import { Actions } from '@ngrx/effects';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
-import { UniversityModel } from 'src/app/_models';
-import { universityActionTypes } from '../actions';
+import { InstitutionModel } from 'src/app/_models';
+import { institutionsActionTypes } from '../actions';
 
 export const universityFeatureKey = 'university';
 
-export interface UniversityState extends EntityState<UniversityModel> {
-  universitiesLoaded: boolean;
+export interface UniversityState extends EntityState<InstitutionModel> {
+  institutionsLoaded: boolean;
 }
 
-export const adapter: EntityAdapter<UniversityModel> =
-  createEntityAdapter<UniversityModel>({
-    selectId:(university: UniversityModel)=> university.name
+export const adapter: EntityAdapter<InstitutionModel> =
+  createEntityAdapter<InstitutionModel>({
+    selectId: (institution: InstitutionModel) => institution.id,
   });
 
 export const initialState = adapter.getInitialState({
-  universitiesLoaded: false,
+  institutionsLoaded: false,
 });
 
 export const universityeducer = createReducer(
   initialState,
 
-  on(universityActionTypes.universitiesLoaded, (state, action) => {
-    return adapter.setAll(action.universities, {
+  on(institutionsActionTypes.institutionsLoaded, (state, action) => {
+    return adapter.setAll(action.institutions, {
       ...state,
-      universitiesLoaded: true,
+      institutionsLoaded: true,
     });
   }),
 
-  on(universityActionTypes.createUniversity, (state, action) => {
-    return adapter.addOne(action.university, state);
+  on(institutionsActionTypes.loadInstitutionById, (state, action) => ({
+    ...state,
+    isLoading: true,
+  })),
+
+  on(institutionsActionTypes.institutionByIdLoaded, (state, action) => ({
+    ...state,
+    isLoading: false,
+    institution: action.institution,
+  })),
+
+  on(institutionsActionTypes.createInstitution, (state, action) => {
+    return adapter.addOne(action.institution, state);
   }),
 
-  on(universityActionTypes.updateUniversity, (state, action) => {
+  on(institutionsActionTypes.updateInstitution, (state, action) => {
     return adapter.updateOne(action.update, state);
-  }), 
+  }),
 
-  on(universityActionTypes.deleteUniversity, (state, action) => {
-    return adapter.removeOne(action.universityId, state);
+  on(institutionsActionTypes.deleteInstitution, (state, action) => {
+    return adapter.removeOne(action.institutionId, state);
   })
-  
 );
 
-export const {selectAll, selectIds} = adapter.getSelectors();
+export const { selectAll, selectIds } = adapter.getSelectors();

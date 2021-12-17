@@ -1,36 +1,47 @@
 import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
-import { UniversityModel } from 'src/app/_models';
+import { InstitutionModel } from 'src/app/_models';
 
-export const loadUniversities = createAction(
-  '[Universities List] Load Universities via API Service',
+export const loadInstitutions = createAction(
+  '[Institutions List] Load Institutions via API Service'
 );
 
-
-export const universitiesLoaded = createAction(
-  '[Universities Effect] Load Universities Loaded Successfully',
-  props<{universities: UniversityModel[]}>()
+export const institutionsLoaded = createAction(
+  '[Institutions Effect] Load Institutions Loaded Successfully',
+  props<{ institutions: InstitutionModel[] }>()
 );
 
-export const createUniversity = createAction(
-  '[Create University Component] Create University',
-  props<{university: UniversityModel}>()
+export const loadInstitutionById = createAction(
+  '[Institution] Get Institution by Id via API Service',
+  props<{ id: string | number }>()
 );
 
-export const updateUniversity = createAction(
-  '[Universities List Operations] Update University',
-  props<{update: Update<UniversityModel>}>()
+export const institutionByIdLoaded = createAction(
+  '[Institution] Get Institution By Id loaded Successfully',
+  props<{ institution: InstitutionModel }>()
 );
 
-export const deleteUniversity = createAction(
-  '[Universities List Operations] Delete University',
-  props<{universityId: string}>()
+export const createInstitution = createAction(
+  '[Create Institution Component] Create Institution',
+  props<{ institution: InstitutionModel }>()
 );
 
-export const universityActionTypes = {
-  loadUniversities,
-  universitiesLoaded,
-  createUniversity,
-  updateUniversity,
-  deleteUniversity
+export const updateInstitution = createAction(
+  '[Institutions List Operations] Update Institution',
+  props<{ update: Update<InstitutionModel> }>()
+);
+
+export const deleteInstitution = createAction(
+  '[Institutions List Operations] Delete Institution',
+  props<{ institutionId: string }>()
+);
+
+export const institutionsActionTypes = {
+  loadInstitutions,
+  loadInstitutionById,
+  institutionByIdLoaded,
+  institutionsLoaded,
+  createInstitution,
+  updateInstitution,
+  deleteInstitution,
 };

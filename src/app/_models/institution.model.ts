@@ -1,5 +1,5 @@
 export interface InstitutionModel {
-  id?: number;
+  id?: any;
   name?: string;
   region?: string;
   isMainCampus?: boolean;

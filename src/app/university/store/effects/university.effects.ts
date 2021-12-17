@@ -1,53 +1,62 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { UniversityService } from 'src/app/_services';
-import { universityActionTypes } from '../actions';
+import { act, Actions, createEffect, ofType } from '@ngrx/effects';
+import { InstitutionService } from 'src/app/_services';
+import { institutionsActionTypes } from '../actions';
 import { concatMap, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class UniversityEffects {
   constructor(
     private actions$: Actions,
-    private universityService: UniversityService,
+    private institutionService: InstitutionService,
     private router: Router
   ) {}
 
-  loadUniversities$ = createEffect(() =>
+  loadInstitutions$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(universityActionTypes.loadUniversities),
-      concatMap(() => this.universityService.getUniversities()),
-      map((universities) =>
-        universityActionTypes.universitiesLoaded({ universities })
+      ofType(institutionsActionTypes.loadInstitutions),
+      concatMap(() => this.institutionService.getAllInstitutions()),
+      map((institutions) =>
+        institutionsActionTypes.institutionsLoaded({ institutions })
       )
     )
   );
 
-  createUniversity$ = createEffect(
+  createInstitution$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(universityActionTypes.createUniversity),
-        // TODO implement Api service call here.
-        tap(() => this.router.navigateByUrl('/universities'))
+        ofType(institutionsActionTypes.createInstitution),
+        concatMap((action) =>
+          this.institutionService.createInstitution(action.institution)
+        ),
+        tap(() => this.router.navigateByUrl('/institutions'))
       ),
     { dispatch: false }
   );
 
-  updateUniversity$ = createEffect(
+  updateInstitution$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(universityActionTypes.updateUniversity)
-        // TODO implement Api service call here.
+        ofType(institutionsActionTypes.updateInstitution),
+        concatMap((action) =>
+          this.institutionService.updateInstitution(
+            action.update.id,
+            action.update.changes
+          )
+        )
       ),
 
     { dispatch: false }
   );
 
-  deleteUniversity$ = createEffect(
+  deleteInstitution$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(universityActionTypes.deleteUniversity)
-        // TODO implement Api service call here.
+        ofType(institutionsActionTypes.deleteInstitution),
+        concatMap((action) =>
+          this.institutionService.deleteInstitution(action.institutionId)
+        )
       ),
     { dispatch: false }
   );

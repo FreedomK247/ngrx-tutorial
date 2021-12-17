@@ -19,20 +19,31 @@ export class InstitutionService {
     return this.http.get<InstitutionModel[]>(`${API_URL}/api/institutions`);
   }
 
-  createInstitution(model: InstitutionModel): Observable<InstitutionModel> {
-    return this.http.post<InstitutionModel>(
-      `${API_URL}/api/institutions`,
-      model
+  getInstitutionById(
+    institutionId: string | number
+  ): Observable<InstitutionModel> {
+    return this.http.get<InstitutionModel>(
+      `${API_URL}/api/institutions/${institutionId}`
     );
+  }
+  
+  createInstitution(model: InstitutionModel): Observable<number> {
+    return this.http.post<number>(`${API_URL}/api/institutions`, model);
   }
 
   updateInstitution(
     institutionId: string | number,
     changes: Partial<InstitutionModel>
   ): Observable<any> {
-    return this.http.put(
+    return this.http.put<number>(
       `${API_URL}/api/institutions/${institutionId}`,
       changes
+    );
+  }
+
+  deleteInstitution(institutionId: string | number): Observable<number> {
+    return this.http.delete<number>(
+      `${API_URL}/api/institutions/${institutionId}`
     );
   }
 }
