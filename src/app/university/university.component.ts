@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../store/reducers';
-import { UniversityModel } from '../_models';
+import { InstitutionModel, UniversityModel } from '../_models';
 import { UniversityService } from '../_services';
-import { getAllUniversities } from './store';
+import { getAllInstitutions } from './store';
 
 @Component({
   selector: 'app-university',
@@ -12,9 +12,9 @@ import { getAllUniversities } from './store';
   styleUrls: ['./university.component.scss'],
 })
 export class UniversityComponent implements OnInit {
-  universities$: Observable<UniversityModel[]>;
+  institutions$: Observable<InstitutionModel[]>;
 
-  universityToBeUpdated: UniversityModel;
+  universityToBeUpdated: InstitutionModel;
 
   isUpdateActivated: false;
 
@@ -24,7 +24,7 @@ export class UniversityComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.universities$ = this.store.select(getAllUniversities);
+    this.institutions$ = this.store.select(getAllInstitutions);
   }
 
   

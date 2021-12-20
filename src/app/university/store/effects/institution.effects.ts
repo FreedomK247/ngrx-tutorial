@@ -6,7 +6,7 @@ import { institutionsActionTypes } from '../actions';
 import { concatMap, map, tap } from 'rxjs/operators';
 
 @Injectable()
-export class UniversityEffects {
+export class InstitutionEffects {
   constructor(
     private actions$: Actions,
     private institutionService: InstitutionService,

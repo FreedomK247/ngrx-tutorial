@@ -14,7 +14,7 @@ import {
  } from '..';
 
 @Injectable()
-export class UniversityResolver implements Resolve<Observable<any>> {
+export class InstitutionResolver implements Resolve<Observable<any>> {
   constructor(private store: Store<AppState>) {}
 
   resolve(

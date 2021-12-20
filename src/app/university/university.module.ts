@@ -9,8 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { UniversityService } from '../_services';
-import { universityeducer, UniversityEffects, UniversityResolver } from './store';
+import { InstitutionService } from '../_services';
+import { institutionReducer, InstitutionEffects, InstitutionResolver } from './store';
 
 @NgModule({
   declarations: [...declarations],
@@ -19,9 +19,9 @@ import { universityeducer, UniversityEffects, UniversityResolver } from './store
     UniversityRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forFeature('universities', universityeducer),
-    EffectsModule.forFeature([UniversityEffects]),
+    StoreModule.forFeature('institutions', institutionReducer),
+    EffectsModule.forFeature([InstitutionEffects]),
   ],
-  providers: [UniversityResolver, UniversityService],
+  providers: [InstitutionResolver, InstitutionService],
 })
 export class UniversityModule {}

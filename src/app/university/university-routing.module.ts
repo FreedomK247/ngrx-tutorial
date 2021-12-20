@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UniversityResolver } from './store';
+import { InstitutionResolver } from './store';
 import { UniversityComponent } from './university.component';
 
 const routes: Routes = [{ path: '', component: UniversityComponent , resolve:{
-  universities: UniversityResolver
+  universities: InstitutionResolver
 }}];
 
 export const declarations = [

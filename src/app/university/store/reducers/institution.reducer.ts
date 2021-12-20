@@ -19,7 +19,7 @@ export const initialState = adapter.getInitialState({
   institutionsLoaded: false,
 });
 
-export const universityeducer = createReducer(
+export const institutionReducer = createReducer(
   initialState,
 
   on(institutionsActionTypes.institutionsLoaded, (state, action) => {

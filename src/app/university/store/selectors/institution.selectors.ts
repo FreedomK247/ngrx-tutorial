@@ -1,15 +1,15 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { selectAll, InstitutionState } from '../reducers';
  
-export const universityFeatureSelector = createFeatureSelector<InstitutionState>('institutions');
+export const institutionFeatureSelector = createFeatureSelector<InstitutionState>('institutions');
 
-export const getAllUniversities = createSelector(
-    universityFeatureSelector,
+export const getAllInstitutions = createSelector(
+    institutionFeatureSelector,
     selectAll
 );
 
 export const areInstitutionsLoaded = createSelector(
-    universityFeatureSelector,
+    institutionFeatureSelector,
     state => state.institutionsLoaded
 );
 
