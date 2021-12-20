@@ -9,10 +9,9 @@ import { select, Store } from '@ngrx/store';
 import { filter, finalize, first, tap } from 'rxjs/operators';
 import { AppState } from 'src/app/store/reducers';
 import {
-  areUniversitiesLoaded,
-  loadUniversities,
-  universitiesLoaded,
-} from '..';
+  areInstitutionsLoaded,
+  loadInstitutions,
+ } from '..';
 
 @Injectable()
 export class UniversityResolver implements Resolve<Observable<any>> {
@@ -23,13 +22,13 @@ export class UniversityResolver implements Resolve<Observable<any>> {
     state: RouterStateSnapshot
   ): Observable<any> | Observable<Observable<any>> | Promise<Observable<any>> {
     return this.store.pipe(
-      select(areUniversitiesLoaded),
-      tap((universitiesLoaded) => {
-        if (!universitiesLoaded) {
-          this.store.dispatch(loadUniversities());
+      select(areInstitutionsLoaded),
+      tap((institutionsLoaded) => {
+        if (!institutionsLoaded) {
+          this.store.dispatch(loadInstitutions());
         }
       }),
-      filter((universitiesLoaded) => universitiesLoaded),
+      filter((institutionsLoaded) => institutionsLoaded),
       first()
     );
   }

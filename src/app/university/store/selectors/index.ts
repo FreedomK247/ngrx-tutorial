@@ -1,1 +1,1 @@
-export * from './university.selectors';
+export * from './institution.selectors';

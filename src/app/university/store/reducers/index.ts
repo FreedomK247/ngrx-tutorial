@@ -1,1 +1,1 @@
-export * from './university.reducer';
+export * from './institution.reducer';

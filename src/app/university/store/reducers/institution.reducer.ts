@@ -4,9 +4,9 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { InstitutionModel } from 'src/app/_models';
 import { institutionsActionTypes } from '../actions';
 
-export const universityFeatureKey = 'university';
+export const institutionFeatureKey = 'institution';
 
-export interface UniversityState extends EntityState<InstitutionModel> {
+export interface InstitutionState extends EntityState<InstitutionModel> {
   institutionsLoaded: boolean;
 }
 

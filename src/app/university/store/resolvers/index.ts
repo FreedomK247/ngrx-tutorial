@@ -1,1 +1,1 @@
-export * from './university.resolver';
+export * from './institution.resolver';

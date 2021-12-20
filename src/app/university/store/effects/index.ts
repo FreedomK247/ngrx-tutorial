@@ -1,1 +1,1 @@
-export * from './university.effects';
+export * from './institution.effects';

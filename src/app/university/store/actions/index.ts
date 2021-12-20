@@ -1,1 +1,1 @@
-export * from './university.actions';
+export * from './institution.actions';
