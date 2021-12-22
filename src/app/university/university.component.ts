@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../store/reducers';
 import { InstitutionModel, UniversityModel } from '../_models';
-import { UniversityService } from '../_services';
 import { getAllInstitutions } from './store';
 
 @Component({
@@ -20,7 +19,6 @@ export class UniversityComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private universityService: UniversityService
   ) {}
 
   ngOnInit(): void {

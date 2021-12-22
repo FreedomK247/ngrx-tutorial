@@ -11,7 +11,8 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { InstitutionService } from '../_services';
 import { institutionReducer, InstitutionEffects, InstitutionResolver } from './store';
-
+import { SharedModule } from '../shared';
+ 
 @NgModule({
   declarations: [...declarations],
   imports: [
@@ -19,6 +20,7 @@ import { institutionReducer, InstitutionEffects, InstitutionResolver } from './s
     UniversityRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     StoreModule.forFeature('institutions', institutionReducer),
     EffectsModule.forFeature([InstitutionEffects]),
   ],

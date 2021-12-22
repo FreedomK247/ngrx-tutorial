@@ -1,0 +1,33 @@
+.container {
+  padding: 1rem;
+
+  .actions {
+    margin: 0 1rem;
+    margin-bottom: 1rem;
+
+    .mat-flat-button.mat-primary {
+      background: #2ecc71;
+    }
+  }
+
+  table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+  }
+
+  th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+  }
+
+  .mat-table {
+    background: transparent;
+    .mat-header-cell,
+    .mat-cell,
+    .mat-footer-cell {
+      color: #2c3e50;
+    }
+  }
+}
