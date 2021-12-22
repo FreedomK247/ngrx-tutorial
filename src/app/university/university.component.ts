@@ -10,20 +10,13 @@ import { getAllInstitutions } from './store';
   templateUrl: './university.component.html',
   styleUrls: ['./university.component.scss'],
 })
-export class UniversityComponent implements OnInit {
-  institutions$: Observable<InstitutionModel[]>;
-
-  universityToBeUpdated: InstitutionModel;
-
-  isUpdateActivated: false;
-
+export class UniversityComponent implements OnInit { 
+ 
   constructor(
-    private store: Store<AppState>,
-  ) {}
+   ) {}
 
   ngOnInit(): void {
-    this.institutions$ = this.store.select(getAllInstitutions);
-  }
+   }
 
   
 }
